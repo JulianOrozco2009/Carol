@@ -1,0 +1,376 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+/* =========================================
+   CONFIGURACIÓN GENERAL
+   ========================================= */
+
+:root {
+    --blue: #2878D7;
+    --blue-light: #72C8FF;
+    --blue-dark: #102F69;
+
+    --gold: #F5C542;
+    --gold-light: #FFE58A;
+
+    --wine: #861F3A;
+    --wine-light: #C45A78;
+
+    --white: #F5F7FF;
+    --muted: #AAB6CC;
+    --background: #050914;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: var(--white);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(40, 120, 215, 0.17), transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(134, 31, 58, 0.13), transparent 40%),
+        radial-gradient(ellipse at 50% 100%, rgba(245, 197, 66, 0.08), transparent 45%),
+        var(--background);
+}
+
+/* =========================================
+   LUCES DECORATIVAS DE FONDO
+   ========================================= */
+
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+    animation: floating 8s ease-in-out infinite alternate;
+}
+
+body::before {
+    background: var(--blue);
+    top: -120px;
+    left: -100px;
+}
+
+body::after {
+    background: var(--wine-light);
+    bottom: -150px;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes floating {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(35px, -25px);
+    }
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+
+.contenido {
+    position: relative;
+    z-index: 2;
+    width: min(90%, 850px);
+    padding: 65px 35px;
+    text-align: center;
+
+    background: rgba(13, 23, 43, 0.68);
+    border: 1px solid rgba(114, 200, 255, 0.2);
+    border-radius: 28px;
+
+    box-shadow:
+        0 0 40px rgba(40, 120, 215, 0.09),
+        0 20px 70px rgba(0, 0, 0, 0.4);
+
+    backdrop-filter: blur(15px);
+
+    animation: aparecer 1.2s ease forwards;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   DETALLE SUPERIOR
+   ========================================= */
+
+.decoracion {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 12px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(245, 197, 66, 0.7);
+}
+
+/* =========================================
+   TÍTULO PRINCIPAL
+   ========================================= */
+
+.greetings {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.greetings span {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #F5C542,
+    #861F3A,
+    #2878D7,
+    #F5C542
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cambiarColores 7s ease-in-out infinite;
+}
+
+@keyframes cambiarColores {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* =========================================
+   DESCRIPCIÓN
+   ========================================= */
+
+.description {
+    max-width: 600px;
+    margin: 0 auto 35px;
+    color: var(--muted);
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   BOTÓN PRINCIPAL
+   ========================================= */
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.botones {
+    padding: 5px;
+    border-radius: 60px;
+    background: linear-gradient(
+        110deg,
+        var(--blue),
+        var(--blue-light),
+        var(--gold)
+    );
+    border: none;
+
+    box-shadow:
+        0 0 20px rgba(40, 120, 215, 0.3),
+        0 0 35px rgba(114, 200, 255, 0.12);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.botones a {
+    display: inline-block;
+    padding: 13px 38px;
+    border-radius: 60px;
+
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    background: linear-gradient(
+        110deg,
+        #164B9B,
+        #2878D7,
+        #397FCB
+    );
+
+    transition: background 0.3s ease;
+}
+
+.botones:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow:
+        0 0 25px rgba(40, 120, 215, 0.5),
+        0 0 45px rgba(114, 200, 255, 0.2);
+}
+
+.botones a:focus,
+.botones a:hover {
+    background: linear-gradient(
+        110deg,
+        #2878D7,
+        #479CEB
+    );
+}
+
+/* =========================================
+   DETALLE INFERIOR
+   ========================================= */
+
+.detalle {
+    margin-top: 35px;
+    color: rgba(245, 197, 66, 0.65);
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media screen and (max-width: 574px) {
+
+    body {
+        padding: 20px;
+    }
+
+    .contenido {
+        width: 100%;
+        padding: 45px 20px;
+        border-radius: 22px;
+    }
+
+    .greetings {
+        font-size: clamp(2.8rem, 12vw, 4rem);
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .botones a {
+        font-size: 0.9rem;
+        padding: 12px 30px;
+    }
+
+    .decoracion {
+        font-size: 0.85rem;
+        letter-spacing: 8px;
+    }
+
+    .detalle {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE - PAGINA PRINCIPAL
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100svh;
+    padding: 20px;
+  }
+
+  /* Contenedor principal */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    margin: auto;
+  }
+
+  /* Título */
+  h1 {
+    font-size: clamp(28px, 8vw, 42px);
+    text-align: center;
+  }
+
+  /* Texto */
+  p {
+    font-size: clamp(18px, 5vw, 24px);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* Imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Botones */
+  button,
+  a {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+  body {
+    padding: 14px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 19px;
+  }
+
+}
